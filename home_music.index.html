@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090f">
+<title>HOME MUSIC 🎶</title>
+<style>
+:root{--bg:#09090f;--panel:#14141f;--panel2:#1c1b2a;--text:#f5f2ff;--muted:#aaa6bd;--pink:#ff6fae;--purple:#a88bff;--line:#302d43}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#201333 0%,var(--bg) 52%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+header{padding:30px 18px 18px;text-align:center}.logo{font-size:clamp(1.8rem,7vw,3.2rem);font-weight:900;letter-spacing:.04em;margin:4px 0;background:linear-gradient(90deg,#fff,var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}.tagline{color:var(--muted);margin:8px auto 0;max-width:500px}
+.wrap{max-width:950px;margin:auto;padding:0 15px 42px}.nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 25px}.nav a{color:var(--text);text-decoration:none;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#11111bcc;font-size:.92rem}.nav a:hover{border-color:var(--pink)}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:720px){.grid{grid-template-columns:1.1fr .9fr}}
+.card{background:linear-gradient(145deg,#191725ee,#101019f2);border:1px solid var(--line);border-radius:22px;padding:19px;box-shadow:0 15px 40px #0003}.card h2{font-size:1.12rem;margin:0 0 7px}.sub{color:var(--muted);font-size:.9rem;line-height:1.5;margin:0 0 15px}
+button,.file-label{border:0;border-radius:13px;padding:11px 14px;font:inherit;font-weight:700;cursor:pointer;transition:transform .15s,opacity .15s}button:hover,.file-label:hover{transform:translateY(-1px)}button:active{transform:scale(.98)}.primary{background:linear-gradient(100deg,var(--pink),var(--purple));color:#160d20}.secondary,.file-label{background:var(--panel2);color:var(--text);border:1px solid #39344f}.danger{background:#3b1c2a;color:#ffc4d8;border:1px solid #663149}.full{width:100%}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.file-label{display:inline-flex;justify-content:center;align-items:center;text-align:center}.file-label input{display:none}
+input[type=search],input[type=text]{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#0b0b13;color:var(--text);font:inherit;outline:none}input:focus{border-color:var(--purple)}
+.song-list{display:grid;gap:9px;margin-top:14px}.song{display:flex;align-items:center;gap:11px;padding:11px;border:1px solid var(--line);border-radius:15px;background:#0c0c14}.disc{width:42px;height:42px;flex-shrink:0;border-radius:13px;background:linear-gradient(135deg,#ff6fae,#8e7bff);display:grid;place-items:center;font-size:1.2rem}.song-info{min-width:0;flex:1}.song-name{font-weight:750;overflow-wrap:anywhere}.song-size{font-size:.78rem;color:var(--muted)}.song button{padding:8px 10px;flex:0 0 auto}.empty{padding:18px;text-align:center;color:var(--muted);border:1px dashed #39344f;border-radius:14px}
+.player{margin-top:13px;padding:13px;border-radius:15px;background:#0b0b13;border:1px solid var(--line)}audio{width:100%;height:42px;margin-top:8px}#nowPlaying{font-weight:750;overflow-wrap:anywhere}.small{font-size:.8rem;color:var(--muted);line-height:1.5}.poem{padding:15px;border-radius:15px;background:linear-gradient(135deg,#21172a,#12121c);border:1px solid #3b2d49;margin-top:10px}.poem p{line-height:1.8;white-space:pre-line;margin:9px 0 12px}.poem button{padding:8px 11px;font-size:.88rem}.heart{color:var(--pink)}.notice{font-size:.82rem;line-height:1.55;color:#c8c2d9;margin-top:12px}.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#272039;color:white;border:1px solid #51426a;padding:10px 15px;border-radius:999px;display:none;max-width:90%;z-index:5}footer{text-align:center;color:#817b94;font-size:.8rem;padding:18px}
+</style>
+</head>
+<body>
+<header>
+  <div style="font-size:1.6rem">🌙 ✦ 🎧 ✦ 🌙</div>
+  <h1 class="logo">HOME MUSIC 🎶</h1>
+  <p class="tagline">Your songs. Your shayari. Your little corner of peace.</p>
+</header>
+<main class="wrap">
+  <nav class="nav"><a href="#music">🎧 My Music</a><a href="#poetry">🖤 Shayari</a><a href="#about">✨ How it works</a></nav>
+  <div class="grid">
+    <section class="card" id="music">
+      <h2>🎧 Your personal music library</h2>
+      <p class="sub">Add songs downloaded on your phone or computer. HOME MUSIC saves them in this browser on this device.</p>
+      <label class="file-label full">＋ Add downloaded music<input id="musicFiles" type="file" accept="audio/*,.mp3,.m4a,.wav,.ogg,.aac,.flac" multiple></label>
+      <div style="height:12px"></div>
+      <input id="search" type="search" placeholder="Search your songs…">
+      <div class="player">
+        <div class="small">NOW PLAYING</div><div id="nowPlaying">Choose a song from your library 🎵</div>
+        <audio id="audio" controls preload="metadata"></audio>
+      </div>
+      <div class="row" style="margin-top:10px"><button id="prev" class="secondary">⏮ Previous</button><button id="next" class="primary">Next ⏭</button></div>
+      <div id="songList" class="song-list"><div class="empty">Your library is waiting for its first song ✨</div></div>
+      <p class="notice">🔒 Your songs are kept in this browser, not uploaded to a server. Browser storage has limits, so keep your original downloaded files too.</p>
+    </section>
+    <section class="card" id="poetry">
+      <h2>🖤 A little poetry corner</h2>
+      <p class="sub">Save a line you love, or copy one to share.</p>
+      <div id="poemList"></div>
+      <div style="margin-top:17px;padding-top:16px;border-top:1px solid var(--line)">
+        <h2>✍️ Add your own shayari</h2>
+        <input id="poemTitle" type="text" placeholder="Title (optional)">
+        <div style="height:8px"></div>
+        <textarea id="poemText" rows="4" placeholder="Write your own lines here…" style="width:100%;resize:vertical;padding:12px;border:1px solid var(--line);border-radius:12px;background:#0b0b13;color:var(--text);font:inherit"></textarea>
+        <div style="height:8px"></div><button id="savePoem" class="primary full">Save my shayari ✨</button>
+      </div>
+    </section>
+  </div>
+  <section class="card" id="about" style="margin-top:16px">
+    <h2>✨ How to use HOME MUSIC</h2>
+    <p class="sub" style="margin-bottom:8px">1. Tap <b>Add downloaded music</b> and choose audio files from Downloads or your music folder.</p>
+    <p class="sub" style="margin-bottom:8px">2. Tap ▶ beside a song to play it. Search to find a track, or use Previous / Next.</p>
+    <p class="sub" style="margin-bottom:8px">3. Add your own shayari. Your saved songs and poems remain in this browser unless its site data is cleared.</p>
+    <p class="sub" style="margin-bottom:0">Tip: this is a local personal music player, not a music downloader. Only add music files you have the right to use.</p>
+  </section>
+  <footer>Made with 🎶 by <strong>Abhinav Kumar</strong> · Your late-night listening corner 🌌</footer>
+</main>
+<div id="toast" class="toast"></div>
+<script>
+const DB_NAME='homeMusicDB', STORE='songs';
+let db, songs=[], currentId=null, currentUrl=null;
+const $=id=>document.getElementById(id);
+function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.style.display='none',2600)}
+function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE))d.createObjectStore(STORE,{keyPath:'id',autoIncrement:true})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+function allSongs(){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readonly').objectStore(STORE).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+function addSong(song){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readwrite').objectStore(STORE).add(song);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+function removeSong(id){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readwrite').objectStore(STORE).delete(id);r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
+function fmt(bytes){if(bytes<1024*1024)return (bytes/1024).toFixed(0)+' KB';return (bytes/1024/1024).toFixed(1)+' MB'}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function refresh(){songs=await allSongs();renderSongs()}
+function renderSongs(){const q=$('search').value.toLowerCase().trim();const filtered=songs.filter(s=>s.name.toLowerCase().includes(q));const box=$('songList');if(!filtered.length){box.innerHTML=`<div class="empty">${songs.length?'No songs match your search.':'Your library is waiting for its first song ✨'}</div>`;return}
+box.innerHTML=filtered.map(s=>`<div class="song"><div class="disc">♫</div><div class="song-info"><div class="song-name">${escapeHtml(s.name)}</div><div class="song-size">${fmt(s.size||0)}</div></div><button class="primary" data-play="${s.id}" aria-label="Play ${escapeHtml(s.name)}">▶</button><button class="danger" data-delete="${s.id}" aria-label="Delete ${escapeHtml(s.name)}">✕</button></div>`).join('')}
+async function playSong(id){const song=songs.find(s=>s.id===Number(id));if(!song)return;if(currentUrl)URL.revokeObjectURL(currentUrl);currentId=song.id;currentUrl=URL.createObjectURL(song.blob);$('audio').src=currentUrl;$('nowPlaying').textContent=song.name;try{await $('audio').play()}catch(e){toast('Tap Play in the player to start the song.')}renderSongs()}
+$('musicFiles').addEventListener('change',async e=>{const files=[...e.target.files];if(!files.length)return;let count=0;for(const f of files){if(!f.type.startsWith('audio/')&&!/\.(mp3|m4a|wav|ogg|aac|flac)$/i.test(f.name))continue;try{await addSong({name:f.name,size:f.size,type:f.type,blob:f,added:Date.now()});count++}catch(err){toast('Could not save more files. Browser storage may be full.');break}}await refresh();toast(count?`Saved ${count} song${count===1?'':'s'} in this browser 🎶`:'No supported audio files selected.');e.target.value=''});
+$('songList').addEventListener('click',async e=>{const p=e.target.closest('[data-play]');const d=e.target.closest('[data-delete]');if(p)await playSong(p.dataset.play);if(d){const id=Number(d.dataset.delete);if(id===currentId){$('audio').pause();$('audio').removeAttribute('src');$('nowPlaying').textContent='Choose a song from your library 🎵';if(currentUrl)URL.revokeObjectURL(currentUrl);currentUrl=null;currentId=null}await removeSong(id);await refresh();toast('Song removed from this browser.')}});
+$('search').addEventListener('input',renderSongs);
+$('next').addEventListener('click',()=>stepSong(1));$('prev').addEventListener('click',()=>stepSong(-1));
+function stepSong(dir){if(!songs.length)return;let i=songs.findIndex(s=>s.id===currentId);i=(i+dir+songs.length)%songs.length;playSong(songs[i].id)}
+$('audio').addEventListener('ended',()=>stepSong(1));
+const defaultPoems=[
+ {title:'Quiet nights',text:'Some nights are made for quiet skies,\nSoft little songs and thoughtful eyes.\nA thousand feelings, a peaceful tune,\nAnd dreams that dance beneath the moon.'},
+ {title:'Dil ki baat',text:'Kuch baatein lafzon mein aati nahi,\nKuch yaadein dil se jaati nahi.\nMusic chale toh lagta hai yun,\nKhamoshi bhi tanha reh paati nahi.'}
+];
+function getPoems(){try{return JSON.parse(localStorage.getItem('homeMusicPoems'))||defaultPoems}catch(e){return defaultPoems}}
+function savePoems(p){localStorage.setItem('homeMusicPoems',JSON.stringify(p))}
+function renderPoems(){const poems=getPoems();$('poemList').innerHTML=poems.map((p,i)=>`<article class="poem"><div style="font-weight:800;color:var(--pink)">${escapeHtml(p.title||'Untitled shayari')}</div><p>${escapeHtml(p.text)}</p><div class="row"><button class="secondary" data-copy="${i}">⧉ Copy</button>${i>=defaultPoems.length?`<button class="danger" data-poemdelete="${i}">Delete</button>`:''}</div></article>`).join('')}
+$('poemList').addEventListener('click',async e=>{const c=e.target.closest('[data-copy]');const d=e.target.closest('[data-poemdelete]');if(c){const p=getPoems()[Number(c.dataset.copy)];try{await navigator.clipboard.writeText((p.title?p.title+'\n':'')+p.text);toast('Shayari copied ✨')}catch(err){toast('Copy is not available in this browser.')}}if(d){const poems=getPoems();poems.splice(Number(d.dataset.poemdelete),1);savePoems(poems);renderPoems();toast('Shayari deleted.')}});
+$('savePoem').addEventListener('click',()=>{const text=$('poemText').value.trim();if(!text){toast('Write a few lines first 😊');return}const poems=getPoems();poems.push({title:$('poemTitle').value.trim()||'My shayari',text});try{savePoems(poems);$('poemTitle').value='';$('poemText').value='';renderPoems();toast('Your shayari is saved ✨')}catch(e){toast('Browser storage is full.')}});
+(async()=>{try{db=await openDB();await refresh()}catch(e){$('songList').innerHTML='<div class="empty">Your browser blocked local storage. Try opening this page in Chrome.</div>'}renderPoems()})();
+</script>
+</body>
+</html>
